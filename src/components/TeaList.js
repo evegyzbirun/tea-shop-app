@@ -14,6 +14,7 @@ function TeaList(props) {
           origin={tea.origin}
           price={tea.price}
           roast={tea.roast}
+          pounds={tea.pounds}
           id={tea.id}
         />
       )}

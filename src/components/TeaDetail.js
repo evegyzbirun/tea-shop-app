@@ -9,6 +9,7 @@ function TeaDetail(props) {
       <h1>Tea Detail</h1>
       <h3>{tea.name} - {tea.origin} - {tea.price}</h3>
       <p><em>{tea.roast}</em></p>
+      <h2>{tea.pounds}</h2>
       <hr />
     </React.Fragment>
   )

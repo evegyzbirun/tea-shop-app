@@ -16,8 +16,9 @@ function Tea(props) {
 Tea.propTypes = {
   name: PropTypes.string,
   origin: PropTypes.string,
-  price: PropTypes.string,
+  price: PropTypes.number,
   roast: PropTypes.string,
+  pounds: PropTypes.number,
   id: PropTypes.string, // new PropType
   whenTeaClicked: PropTypes.func // new PropType
 };

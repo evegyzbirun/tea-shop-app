@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 
 function ReusableForm(props) {
+
+
   return (
     <React.Fragment>
       <form onSubmit={props.formSubmissionHandler}>
@@ -14,13 +16,21 @@ function ReusableForm(props) {
           name="origin"
           placeholder="origin" />
         <input
-          type="text"
+          type="number"
           name="price"
           placeholder="price" />
         <input
           type="text"
           name="roast"
           placeholder="roast" />
+        <label>
+          <p>Pounds</p>
+          <select name="pounds">
+
+            <option value="pounds">130</option>
+
+          </select>
+        </label>
         <button type='submit'>{props.buttonText}</button>
       </form>
     </React.Fragment>
