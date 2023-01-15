@@ -8,12 +8,9 @@ function Tea(props) {
         <h3>{props.name} - {props.origin} - {props.price}</h3>
         <p><em>{props.roast}</em></p>
         <hr />
-
       </div>
-
-
     </React.Fragment>
-  )
+  );
 }
 
 Tea.propTypes = {

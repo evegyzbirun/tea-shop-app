@@ -5,9 +5,9 @@ import ReusableForm from "./ReusableForm";
 
 function NewTeaForm(props) {
 
-  function handleNewTeaFormSubmission(event) { 
+  function handleNewTeaFormSubmission(event) {
     event.preventDefault();
-    props.onNewTicketCreation({
+    props.onNewTeaCreation({
       name: event.target.name.value,
       origin: event.target.origin.value,
       price: event.target.price.value,

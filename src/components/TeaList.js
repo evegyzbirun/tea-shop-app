@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 function TeaList(props) {
   return (
     <React.Fragment>
-      <hr />
+      <hr/>
       {props.teaList.map((tea) =>
         <Tea
           whenTeaClicked={props.onTeaSelection}

@@ -15,7 +15,7 @@ function TeaDetail(props) {
 }
 
 TeaDetail.propTypes = {
-  tea: PropTypes.object,
+  tea: PropTypes.object
   // onClickingDelete: PropTypes.func, // new code
   // onClickingEdit: PropTypes.func // new code
 };

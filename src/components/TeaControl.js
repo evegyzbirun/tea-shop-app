@@ -30,12 +30,12 @@ class TeaControl extends React.Component {
     }
   }
 
-  reader() {
+  render() {
     let currentlyVisibleState = null;
     let buttonText = null;
 
     if (this.state.formVisibleOnPage) {
-      currentlyVisibleState = <NewTeaForm onNewTicketCreation={this.handleAddingNewTeaToList} />;
+      currentlyVisibleState = <NewTeaForm onNewTeaCreation={this.handleAddingNewTeaToList} />;
 
       buttonText = "Return to Tea List";
     } else {
