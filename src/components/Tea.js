@@ -5,10 +5,12 @@ function Tea(props) {
   return (
     <React.Fragment>
       <div onClick={() => props.whenTeaClicked(props.id)}>
-        <h3>{props.name} - {props.origin} - {props.price}</h3>
-        <p><em>{props.roast}</em></p>
+        <h3>{props.name} - {props.origin} - {props.price} $</h3>
+        <p>roasted for <em>{props.roast}</em> days</p>
         <h2>{props.pounds} pounds</h2>
         <hr />
+
+
       </div>
     </React.Fragment>
   );

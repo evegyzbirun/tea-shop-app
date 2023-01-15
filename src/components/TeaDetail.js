@@ -7,8 +7,9 @@ function TeaDetail(props) {
   return (
     <React.Fragment>
       <h1>Tea Detail</h1>
-      <h3>{tea.name} - {tea.origin} - {tea.price}</h3>
-      <p><em>{tea.roast}</em></p>
+      <h3>{tea.name} - {tea.origin}</h3>
+      <p><h2>{tea.price}</h2>$</p>
+      <p>roast for<em>{tea.roast}</em> days</p>
       <h2>{tea.pounds}</h2>
       <hr />
     </React.Fragment>
