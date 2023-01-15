@@ -23,14 +23,13 @@ function ReusableForm(props) {
           type="text"
           name="roast"
           placeholder="roast" />
-        <label>
-          <p>Pounds</p>
-          <select name="pounds">
 
-            <option value="pounds">130</option>
+        <input
+          type="number"
+          name="pounds"
+          placeholder="pounds"
+          value={130} />
 
-          </select>
-        </label>
         <button type='submit'>{props.buttonText}</button>
       </form>
     </React.Fragment>

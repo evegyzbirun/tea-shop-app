@@ -12,6 +12,7 @@ function NewTeaForm(props) {
       origin: event.target.origin.value,
       price: event.target.price.value,
       roast: event.target.roast.value,
+      pounds: event.target.pounds.value,
       id: v4()
     });
   }
