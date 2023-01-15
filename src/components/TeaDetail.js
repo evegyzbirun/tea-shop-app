@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 function TeaDetail(props) {
-  const { tea, onClickingDelete } = props;
+  const { tea } = props;
 
   return (
     <React.Fragment>

@@ -20,7 +20,7 @@ function NewTeaForm(props) {
   return (
     <React.Fragment>
       <ReusableForm
-        formSubmissionHandler={handleNewTicketFormSubmission}
+        formSubmissionHandler={handleNewTeaFormSubmission}
         buttonText="Submit!" />
     </React.Fragment>
   )
