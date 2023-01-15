@@ -1,9 +1,9 @@
 import React from 'react';
 import NewTeaForm from './NewTeaForm';
 import TeaList from './TeaList';
-//import TeaDetail from './TeaDetail';
 
-class TeaControl extends React.Comment {
+
+class TeaControl extends React.Component {
 
   constructor(props) {
     super(props);
@@ -20,8 +20,8 @@ class TeaControl extends React.Comment {
     if (this.state.selectedTea != null) {
       this.setState({
         formVisibleOnPage: false,
-        selectedTea: null,
-        editing: false // new code
+        selectedTea: null
+
       });
     } else {
       this.setState(prevState => ({
