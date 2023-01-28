@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 function TeaDetail(props) {
-  const { tea } = props;
+  const { tea, onClickingSell } = props;
 
   return (
     <React.Fragment>
@@ -11,14 +11,15 @@ function TeaDetail(props) {
       <p><h2>{tea.price}</h2>$</p>
       <p>roast for<em>{tea.roast}</em> days</p>
       <h2>{tea.pounds}</h2>
+      <button onClick={onClickingSell}>Sell</button>
       <hr />
     </React.Fragment>
   )
 }
 
 TeaDetail.propTypes = {
-  tea: PropTypes.object
-  // onClickingDelete: PropTypes.func, // new code
+  tea: PropTypes.object,
+  onClickingSell: PropTypes.func 
   // onClickingEdit: PropTypes.func // new code
 };
 

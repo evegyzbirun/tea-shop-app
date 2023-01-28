@@ -1,6 +1,7 @@
 import React from 'react';
 import NewTeaForm from './NewTeaForm';
 import TeaList from './TeaList';
+import TeaDetail from './TeaDetail';
 
 
 class TeaControl extends React.Component {
@@ -10,7 +11,8 @@ class TeaControl extends React.Component {
     this.state = {
       formVisibleOnPage: false,
       mainTeaList: [],
-      selectedTea: null
+      selectedTea: null,
+      pounds: null
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -37,7 +39,14 @@ class TeaControl extends React.Component {
     if (this.state.formVisibleOnPage) {
       currentlyVisibleState = <NewTeaForm onNewTeaCreation={this.handleAddingNewTeaToList} />;
       buttonText = "Return to Tea List";
-    } else {
+    }
+    else if (this.state.selectedTea != null) {
+      currentlyVisibleState = <TeaDetail
+        tea={this.state.selectedTea}
+        onClickingSell={this.handleSellingTea} />;
+      buttonText = "Return to Tea List";
+    }
+    else {
       currentlyVisibleState = <TeaList teaList={this.state.mainTeaList} onTeaSelection={this.handleChangingSelectedTea} />;
 
       buttonText = "Add Tea";
@@ -49,6 +58,19 @@ class TeaControl extends React.Component {
         <button onClick={this.handleClick}>{buttonText}</button>
       </React.Fragment>
     );
+  }
+
+  handleSellingTea = (teaToSell) => {
+    const sellMainTeaList = this.state.mainTeaList.filter(tea => tea.id !== this.state.selectedTea.id).concat(teaToSell)
+
+    this.state.tea.pounds > 0 ?
+
+      this.setState({
+        mainTeaList: sellMainTeaList,
+        pounds: this.state.tea.pounds - 1
+      })
+      :
+      alert("Out of stock")
   }
 
   handleAddingNewTeaToList = (newTea) => {
@@ -63,6 +85,7 @@ class TeaControl extends React.Component {
     const selectedTea = this.state.mainTeaList.filter(tea => tea.id === id)[0];
     this.setState({ selectedTea: selectedTea });
   }
+
 }
 
 export default TeaControl;
