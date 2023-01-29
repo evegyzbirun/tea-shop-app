@@ -100,6 +100,9 @@ class TeaControl extends React.Component {
     // });
 
     this.setState(state => {
+      if (state.selectedTea.pounds === 0) {
+        return { message: "Out of Stock" }
+      }
       const updatedTea = { ...state.selectedTea, pounds: state.selectedTea.pounds - 65 };
       const soldMainTeaList = [...state.mainTeaList.filter(tea => tea.id !== this.state.selectedTea.id), updatedTea];
       return { mainTeaList: soldMainTeaList, selectedTea: updatedTea }
