@@ -19,8 +19,8 @@
 
 1. clone with github link.
 2. open with Visual Studio Code.
-3.
-4. ($ npm run start) and ready to go
+3. run (npm run build) before step 4.
+4. (npm run start) and ready to go
 
 
 
