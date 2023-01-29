@@ -28,6 +28,7 @@ class TeaControl extends React.Component {
         editing: false
 
 
+
       });
     } else {
       this.setState(prevState => ({
@@ -35,6 +36,8 @@ class TeaControl extends React.Component {
       }));
     }
   }
+
+
 
   handleEditClick = () => {
     this.setState({ editing: true });
@@ -85,19 +88,24 @@ class TeaControl extends React.Component {
     );
   }
 
-  handleSellingTea = (index) => {
 
-    this.state.mainTeaList.tea.pounds > 0 ?
+  handleSellingTea = () => {
 
-      this.setState(state => {
-        const sellItem = [this.state.mainTeaList.tea];
-        sellItem[index].pounds = sellItem[index].pounds - 130;
-        return { mainTeaList: { tea: sellItem } };
-      },
-      )
-      :
-      alert("Out of stock")
+    // this.setState(state => {
+    //   const soldMainTeaList = [...state.mainTeaList.filter(tea => tea.id !== this.state.selectedTea.id)];
+
+
+    //   soldMainTeaList[teaToSell].pounds = soldMainTeaList[teaToSell].pounds - 1;
+    //   return { mainTeaList: { tea: soldMainTeaList } };
+    // });
+
+    this.setState(state => {
+      const updatedTea = { ...state.selectedTea, pounds: state.selectedTea.pounds - 65 };
+      const soldMainTeaList = [...state.mainTeaList.filter(tea => tea.id !== this.state.selectedTea.id), updatedTea];
+      return { mainTeaList: soldMainTeaList, selectedTea: updatedTea }
+    });
   }
+
 
   handleAddingNewTeaToList = (newTea) => {
     const newMainTeaList = this.state.mainTeaList.concat(newTea);
