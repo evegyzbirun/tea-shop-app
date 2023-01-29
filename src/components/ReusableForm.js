@@ -18,11 +18,11 @@ function ReusableForm(props) {
         <input
           type="number"
           name="price"
-          placeholder="price" />
+          placeholder="price in $" />
         <input
           type="text"
-          name="roast"
-          placeholder="roast" />
+          name="roasted"
+          placeholder="roasted for ... days" />
 
         <input
           type="number"

@@ -10,7 +10,7 @@ function TeaDetail(props) {
       <h3>{tea.name} - {tea.origin}</h3>
       <p>{tea.price}$</p>
       <p>roast for<em>{tea.roast}</em> days</p>
-      <h2>{tea.pounds}</h2>
+      <h2>{tea.pounds} pounds</h2>
       <button onClick={onClickingEdit}>Update Tea</button>
       <button onClick={() => onClickingSell(tea.pounds)}>Sell</button>
       <hr />
