@@ -2,6 +2,7 @@ import React from 'react';
 import NewTeaForm from './NewTeaForm';
 import TeaList from './TeaList';
 import TeaDetail from './TeaDetail';
+import EditTeaForm from './EditTeaFrom';
 
 
 class TeaControl extends React.Component {
@@ -12,6 +13,7 @@ class TeaControl extends React.Component {
       formVisibleOnPage: false,
       mainTeaList: [],
       selectedTea: null,
+      editing: false,
       pounds: null
     };
     this.handleClick = this.handleClick.bind(this);
@@ -22,7 +24,9 @@ class TeaControl extends React.Component {
     if (this.state.selectedTea != null) {
       this.setState({
         formVisibleOnPage: false,
-        selectedTea: null
+        selectedTea: null,
+        editing: false
+
 
       });
     } else {
@@ -32,18 +36,39 @@ class TeaControl extends React.Component {
     }
   }
 
+  handleEditClick = () => {
+    this.setState({ editing: true });
+  }
+
+  handleEditingTeaInList = (teaToEdit) => {
+    const editedMainTeaList = this.state.mainTeaList
+      .filter(tea => tea.id !== this.state.selectedTea.id)
+      .concat(teaToEdit);
+    this.setState({
+      mainTeaList: editedMainTeaList,
+      editing: false,
+      selectedTea: null
+    });
+  }
+
   render() {
     let currentlyVisibleState = null;
     let buttonText = null;
 
-    if (this.state.formVisibleOnPage) {
-      currentlyVisibleState = <NewTeaForm onNewTeaCreation={this.handleAddingNewTeaToList} />;
+    if (this.state.editing) {
+      currentlyVisibleState = <EditTeaForm tea={this.state.selectedTea} onEditTea={this.handleEditingTeaInList} />
       buttonText = "Return to Tea List";
+
     }
     else if (this.state.selectedTea != null) {
       currentlyVisibleState = <TeaDetail
         tea={this.state.selectedTea}
-        onClickingSell={this.handleSellingTea} />;
+        onClickingSell={this.handleSellingTea}
+        onClickingEdit={this.handleEditClick} />;
+      buttonText = "Return to Tea List";
+    }
+    else if (this.state.formVisibleOnPage) {
+      currentlyVisibleState = <NewTeaForm onNewTeaCreation={this.handleAddingNewTeaToList} />;
       buttonText = "Return to Tea List";
     }
     else {
@@ -60,15 +85,16 @@ class TeaControl extends React.Component {
     );
   }
 
-  handleSellingTea = (teaToSell) => {
-    const sellMainTeaList = this.state.mainTeaList.filter(tea => tea.id !== this.state.selectedTea.id).concat(teaToSell)
+  handleSellingTea = (index) => {
 
-    this.state.tea.pounds > 0 ?
+    this.state.mainTeaList.tea.pounds > 0 ?
 
-      this.setState({
-        mainTeaList: sellMainTeaList,
-        pounds: this.state.tea.pounds - 1
-      })
+      this.setState(state => {
+        const sellItem = [this.state.mainTeaList.tea];
+        sellItem[index].pounds = sellItem[index].pounds - 130;
+        return { mainTeaList: { tea: sellItem } };
+      },
+      )
       :
       alert("Out of stock")
   }

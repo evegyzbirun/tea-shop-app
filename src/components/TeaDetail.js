@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 function TeaDetail(props) {
-  const { tea, onClickingSell } = props;
+  const { tea, onClickingSell,onClickingEdit } = props;
 
   return (
     <React.Fragment>
@@ -11,7 +11,8 @@ function TeaDetail(props) {
       <p><h2>{tea.price}</h2>$</p>
       <p>roast for<em>{tea.roast}</em> days</p>
       <h2>{tea.pounds}</h2>
-      <button onClick={onClickingSell}>Sell</button>
+      <button onClick={onClickingEdit}>Update Tea</button>
+      <button onClick={() => onClickingSell(tea.pounds)}>Sell</button>
       <hr />
     </React.Fragment>
   )
@@ -19,8 +20,8 @@ function TeaDetail(props) {
 
 TeaDetail.propTypes = {
   tea: PropTypes.object,
-  onClickingSell: PropTypes.func 
-  // onClickingEdit: PropTypes.func // new code
+  onClickingSell: PropTypes.func,
+  onClickingEdit: PropTypes.func // new code
 };
 
 export default TeaDetail;
